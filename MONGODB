@@ -1,0 +1,25 @@
+#Instalar Mongodb
+  Pagina Oficial
+  
+#Dar los permisos al usuario
+
+https://stackoverflow.com/questions/7948789/mongod-complains-that-there-is-no-data-db-folder
+
+#Crear el servicio mongod.service
+
+sudo vim /etc/systemd/system/mongodb.service
+
+[Unit]
+Description=High-performance, schema-free document-oriented database
+After=network.target
+
+[Service]
+User=mongodb
+ExecStart=/usr/bin/mongod --quiet --config /etc/mongod.conf
+
+[Install]
+WantedBy=multi-user.target
+
+sudo systemctl start mongodb
+sudo systemctl status mongodb
+sudo systemctl enable mongodb
